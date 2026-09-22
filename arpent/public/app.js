@@ -202,10 +202,54 @@ function renderResults(data) {
         <span class="mono">SIRET ${escapeHtml(company.siret || "—")}</span>
       </div>
       <div class="cc-badges">${badgesHtml}</div>
+      <div class="cc-web" data-role="web-presence">
+        <button type="button" class="web-check-btn">Vérifier présence web</button>
+      </div>
     `;
     card.addEventListener("click", () => focusCompanyOnMap(company));
+
+    const webCheckBtn = card.querySelector(".web-check-btn");
+    webCheckBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      checkWebPresence(company, card.querySelector('[data-role="web-presence"]'));
+    });
+
     els.resultsList.appendChild(card);
   });
+}
+
+async function checkWebPresence(company, container) {
+  container.innerHTML = '<span class="web-status">Recherche en cours…</span>';
+  try {
+    const params = new URLSearchParams({ nom: company.nom });
+    if (company.adresse) params.set("adresse", company.adresse);
+    if (company.commune) params.set("commune", company.commune);
+
+    const res = await fetch(`/api/enrich?${params.toString()}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Erreur lors de la vérification.");
+
+    if (!data.found) {
+      container.innerHTML = '<span class="badge neutral">Aucune fiche Google trouvée</span>';
+      return;
+    }
+
+    const parts = [];
+    if (data.siteWeb) {
+      parts.push(
+        `<span class="badge good">Site web trouvé</span>`,
+        `<a class="web-link" href="${escapeHtml(data.siteWeb)}" target="_blank" rel="noopener noreferrer">${escapeHtml(data.siteWeb)}</a>`
+      );
+    } else {
+      parts.push('<span class="badge warn">Fiche trouvée, pas de site web</span>');
+    }
+    if (data.note != null) {
+      parts.push(`<span class="web-rating mono">${data.note.toFixed(1)}★ (${data.avis || 0} avis)</span>`);
+    }
+    container.innerHTML = parts.join(" ");
+  } catch (err) {
+    container.innerHTML = `<span class="badge warn">${escapeHtml(err.message)}</span>`;
+  }
 }
 
 function renderMapMarkers(data) {

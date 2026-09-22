@@ -5,6 +5,7 @@ const { geocodeAddress, suggestAddresses } = require("../services/geocode");
 const { selectDepartments, fetchCompanies } = require("../services/sirene");
 const { filterByRadius } = require("../utils/geo");
 const { qualifyCompany } = require("../utils/qualification");
+const { findWebPresence } = require("../services/places");
 const secteurs = require("../data/secteurs.json");
 
 const router = express.Router();
@@ -81,6 +82,23 @@ router.get("/search", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(502).json({ error: err.message || "Erreur lors de la recherche." });
+  }
+});
+
+router.get("/enrich", async (req, res) => {
+  try {
+    const { nom, adresse, commune } = req.query;
+    if (!nom) {
+      return res.status(400).json({ error: "Nom d'entreprise requis." });
+    }
+    const presence = await findWebPresence({
+      nom: nom.toString(),
+      adresse: adresse ? adresse.toString() : undefined,
+      commune: commune ? commune.toString() : undefined,
+    });
+    res.json(presence);
+  } catch (err) {
+    res.status(502).json({ error: err.message || "Erreur lors de l'enrichissement web." });
   }
 });
 

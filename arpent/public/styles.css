@@ -159,4 +159,15 @@ input[type="range"]{ width:100%; accent-color:var(--accent); margin-top:8px; }
 .badge.info{ background:var(--accent-soft); color:var(--accent); }
 .badge.neutral{ background:var(--paper); color:var(--text-soft); border:1px solid var(--line); }
 
+.cc-web{ margin-top:9px; display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+.web-check-btn{
+  font-size:0.72rem; font-weight:600; padding:5px 10px; border-radius:999px;
+  border:1px dashed var(--line); background:transparent; color:var(--text-soft);
+  cursor:pointer; font-family:inherit;
+}
+.web-check-btn:hover{ border-color:var(--accent); color:var(--accent); }
+.web-status{ font-size:0.72rem; color:var(--text-soft); font-style:italic; }
+.web-link{ font-size:0.72rem; color:var(--accent); word-break:break-all; }
+.web-rating{ font-size:0.7rem; color:var(--text-soft); }
+
 .leaflet-popup-content{ font-family:'Schibsted Grotesk', sans-serif; font-size:0.8rem; }

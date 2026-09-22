@@ -32,3 +32,5 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: GOOGLE_PLACES_API_KEY
+        sync: false
