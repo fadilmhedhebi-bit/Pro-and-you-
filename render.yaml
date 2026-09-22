@@ -20,3 +20,15 @@ services:
         generateValue: true
       - key: NODE_ENV
         value: production
+
+  - type: web
+    name: arpent
+    runtime: node
+    plan: free
+    rootDir: arpent
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
