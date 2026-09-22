@@ -1,0 +1,38 @@
+[
+  {
+    "id": "restauration",
+    "label": "Restauration",
+    "nafCodes": ["56.10A", "56.10B", "56.10C", "56.21Z", "56.29A", "56.29B", "56.30Z"]
+  },
+  {
+    "id": "commerce",
+    "label": "Commerce de détail",
+    "nafCodes": [
+      "47.21Z", "47.22Z", "47.23Z", "47.24Z", "47.25Z", "47.29Z",
+      "47.51Z", "47.71Z", "47.72A", "47.72B", "47.75Z", "47.76Z", "47.78C"
+    ]
+  },
+  {
+    "id": "artisanat",
+    "label": "Artisanat & bâtiment",
+    "nafCodes": [
+      "43.21A", "43.22A", "43.22B", "43.29A", "43.31Z",
+      "43.32A", "43.32B", "43.33Z", "43.34Z", "43.91A", "43.91B"
+    ]
+  },
+  {
+    "id": "hebergement",
+    "label": "Hébergement",
+    "nafCodes": ["55.10Z", "55.20Z", "55.30Z", "55.90Z"]
+  },
+  {
+    "id": "beaute",
+    "label": "Beauté & bien-être",
+    "nafCodes": ["96.02A", "96.02B", "96.04Z", "93.13Z"]
+  },
+  {
+    "id": "services",
+    "label": "Services aux entreprises",
+    "nafCodes": ["70.22Z", "74.10Z", "74.20Z", "82.30Z"]
+  }
+]

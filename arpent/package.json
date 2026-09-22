@@ -1,0 +1,16 @@
+{
+  "name": "arpent",
+  "version": "0.1.0",
+  "description": "Prospection B2B géolocalisée — recensement d'entreprises par zone et activité",
+  "main": "server/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "leaflet": "^1.9.4"
+  }
+}
