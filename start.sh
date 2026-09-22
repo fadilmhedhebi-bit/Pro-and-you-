@@ -2,7 +2,7 @@
 set -e
 
 echo ""
-echo "  Tournee Snack Express - Demarrage"
+echo "  Pro and You - Demarrage"
 echo "  ================================="
 echo ""
 

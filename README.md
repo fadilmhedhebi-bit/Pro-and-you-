@@ -1,4 +1,4 @@
-# Tournee Snack Express
+# Pro and You
 
 Application de gestion de livraisons pour snacks et restaurants. Gestion des commandes, des tournees, du stock, et suivi GPS en temps reel.
 
@@ -54,8 +54,8 @@ Le frontend demarre sur **http://localhost:5173** et le backend sur **http://loc
 3. Cliquez **New** > **Blueprint**
 4. Connectez votre repo GitHub
 5. Render detecte automatiquement `render.yaml` et cree :
-   - Une base PostgreSQL (`tournee-snack-db`)
-   - Un web service (`tournee-snack-express`) qui sert le frontend et l'API
+   - Une base PostgreSQL (`pro-and-you-db`)
+   - Un web service (`pro-and-you`) qui sert le frontend et l'API
 6. Attendez que le build et le deploy se terminent
 7. Chargez les donnees de demo :
    - Allez dans le shell de votre web service (onglet **Shell**)
